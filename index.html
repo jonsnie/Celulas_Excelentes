@@ -34,12 +34,21 @@
     select, input[type="text"], textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0f1728;color:var(--text);outline:none}
     textarea{min-height:86px;resize:vertical}
     .score{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
-    .metric{padding:14px;border-radius:14px;background:var(--panel-2);border:1px solid var(--border)}
+    .metric{padding:14px;border-radius:14px;background:var(--panel-2);border:1px solid var(--border);transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease}
+    .metric.metric-good{background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+    .metric.metric-warn{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+    .metric.metric-bad{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
     .metric .value{font-size:28px;font-weight:700;margin-top:4px}
     .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px}
     .good{background:rgba(34,197,94,.15);color:#8df0ae;border:1px solid rgba(34,197,94,.35)}
     .warn{background:rgba(245,158,11,.15);color:#ffd089;border:1px solid rgba(245,158,11,.35)}
     .bad{background:rgba(239,68,68,.15);color:#ffabab;border:1px solid rgba(239,68,68,.35)}
+    #classificacao{padding:14px;border-radius:14px;border:1px solid var(--border);background:rgba(24,34,53,.72);transition:background-color .2s ease,border-color .2s ease}
+    #classificacao.good{background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3)}
+    #classificacao.warn{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.3)}
+    #classificacao.bad{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.3)}
+    #classificacao p{margin:0}
+    #classificacao p + p{margin-top:8px}
     .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     button{border:none;background:var(--accent);color:white;border-radius:10px;padding:11px 14px;cursor:pointer;font-weight:700}
     button.secondary{background:#24324f;border:1px solid var(--border)}
@@ -48,16 +57,27 @@
     .day{padding:14px;border-radius:14px;background:var(--panel-2);border:1px solid var(--border)}
     .day h3{font-size:16px;margin-bottom:8px}
     .footer-note{margin-top:14px;font-size:12px;color:var(--muted)}
-    .summary-list{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .insights-table{width:100%;margin-top:12px;border-collapse:collapse;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02)}
+    .insights-table th,.insights-table td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}
+    .insights-table th{font-size:12px;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.04)}
+    .insights-table td{color:var(--text)}
+    .insights-table tbody tr:last-child td{border-bottom:none}
+    .insights-table td:first-child{white-space:nowrap;width:1%}
+    .insights-table th:nth-child(3),.insights-table td:nth-child(3){text-align:center}
+    .insights-table .insight-summary td{font-size:13px;color:var(--muted);padding-top:0;padding-bottom:12px}
+    .insight-chip{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.2px;line-height:1;white-space:nowrap}
+    .insight-chip-priority{background:rgba(239,68,68,.15);color:#ffabab;border:1px solid rgba(239,68,68,.35)}
+    .insight-chip-strength{background:rgba(34,197,94,.15);color:#8df0ae;border:1px solid rgba(34,197,94,.35)}
     .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     @media (max-width: 900px){.grid{grid-template-columns:1fr}.item{grid-template-columns:1fr}.score{grid-template-columns:1fr}.two-cols{grid-template-columns:1fr}}
-    @media print{body{background:#fff;color:#000}.hero,.card,.metric,.day{box-shadow:none;background:#fff;color:#000}p,.small,.summary-list{color:#333}select,input,textarea{border:1px solid #bbb;color:#000;background:#fff}.toolbar{display:none}}
+    @media print{body{background:#fff;color:#000}.hero,.card,.metric,.day{box-shadow:none;background:#fff;color:#000}p,.small,.insights-table th,.insights-table td{color:#333}.insights-table{background:#fff;border:1px solid #bbb}.insights-table th,.insights-table td{border-bottom:1px solid #bbb}select,input,textarea{border:1px solid #bbb;color:#000;background:#fff}.toolbar{display:none}}
   </style>
 </head>
 <body>
   <div class="container">
     <div class="hero">
       <h1>Checklist prático de avaliação da célula</h1>
+      <h5>Seja honesto consigo mesmo pois nenhuma informação é compartilhada, o salvamento é local e restrito ao seu dispositivo. Para maiores esclaricmentos leia o livro Células Excelentes de Léo Matos o qual este checklist foi baseado.</h5>
       <p>Formulário para cálculo dinâmico da pontuação. Use nota de <strong>0 a 5</strong></p>
       <div class="toolbar">
         <button type="button" onclick="saveData()">Salvar agora</button>
@@ -131,7 +151,16 @@
             <div class="metric"><div class="small">Total geral</div><div class="value" id="totalGeral">0</div></div>
           </div>
           <div id="classificacao"></div>
-          <ul class="summary-list" id="insights"></ul>
+          <table class="insights-table" id="insights">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Área</th>
+                <th>Pontuação</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div></div>
 
         <div class="card section"><div class="section-header"><h2>Plano semanal de melhoria<br><small style="font-size:12px;">Plano sugerido, adapte conforme o dia da sua célula</small></h2></div><div class="section-body"><div class="days">
@@ -156,15 +185,44 @@
       if(total >= 70){ return { label: "Atenção", cls: "warn", text: "Há boa base, mas existem áreas que precisam de intervenção prática nesta semana." }; }
       return { label: "Célula em risco", cls: "bad", text: "A célula precisa de ação imediata, foco e acompanhamento mais próximo." };
     }
+    function classifyPartial(score, maxScore){
+      const ratio = maxScore ? score / maxScore : 0;
+      if(ratio >= 0.8) return "good";
+      if(ratio >= 0.56) return "warn";
+      return "bad";
+    }
+    function setMetricState(valueId, state){
+      const valueEl = document.getElementById(valueId);
+      const card = valueEl ? valueEl.closest(".metric") : null;
+      if(!card) return;
+      card.classList.remove("metric-good", "metric-warn", "metric-bad");
+      card.classList.add(`metric-${state}`);
+    }
     function renderInsights(scores){
       const ordered = Object.entries(scores).sort((a,b) => a[1]-b[1]);
       const weakest = ordered.slice(0,2);
       const strongest = ordered.slice(-2).reverse();
       const nameMap = {vida:"Vida", lideranca:"Liderança", organizacao:"Organização", ambiente:"Ambiente", espiritualidade:"Espiritualidade"};
-      const list = document.getElementById("insights");
-      list.innerHTML = "";
-      weakest.forEach(([key, value]) => { const li = document.createElement("li"); li.textContent = `Prioridade de melhoria: ${nameMap[key]} (${value}/25).`; list.appendChild(li); });
-      strongest.forEach(([key, value]) => { const li = document.createElement("li"); li.textContent = `Ponto forte atual: ${nameMap[key]} (${value}/25).`; list.appendChild(li); });
+      const tableBody = document.querySelector("#insights tbody");
+      tableBody.innerHTML = "";
+      weakest.forEach(([key, value]) => {
+        const mainRow = document.createElement("tr");
+        mainRow.innerHTML = `<td><span class="insight-chip insight-chip-priority">Prioridade</span></td><td>${nameMap[key]}</td><td>${value}/25</td>`;
+        tableBody.appendChild(mainRow);
+        const summaryRow = document.createElement("tr");
+        summaryRow.className = "insight-summary";
+        summaryRow.innerHTML = `<td colspan="3">Área com maior necessidade de melhoria nesta semana.</td>`;
+        tableBody.appendChild(summaryRow);
+      });
+      strongest.forEach(([key, value]) => {
+        const mainRow = document.createElement("tr");
+        mainRow.innerHTML = `<td><span class="insight-chip insight-chip-strength">Ponto forte</span></td><td>${nameMap[key]}</td><td>${value}/25</td>`;
+        tableBody.appendChild(mainRow);
+        const summaryRow = document.createElement("tr");
+        summaryRow.className = "insight-summary";
+        summaryRow.innerHTML = `<td colspan="3">Área mais consistente no momento.</td>`;
+        tableBody.appendChild(summaryRow);
+      });
     }
     function updateScores(){
       const scores = {
@@ -179,10 +237,18 @@
       document.getElementById("organizacaoTotal").textContent = scores.organizacao;
       document.getElementById("ambienteTotal").textContent = scores.ambiente;
       document.getElementById("espiritualidadeTotal").textContent = scores.espiritualidade;
+      setMetricState("vidaTotal", classifyPartial(scores.vida, 25));
+      setMetricState("liderancaTotal", classifyPartial(scores.lideranca, 25));
+      setMetricState("organizacaoTotal", classifyPartial(scores.organizacao, 25));
+      setMetricState("ambienteTotal", classifyPartial(scores.ambiente, 25));
+      setMetricState("espiritualidadeTotal", classifyPartial(scores.espiritualidade, 25));
       const total = Object.values(scores).reduce((a,b)=>a+b,0);
       document.getElementById("totalGeral").textContent = total;
       const c = classify(total);
-      document.getElementById("classificacao").innerHTML = `<p><span class="tag ${c.cls}">${c.label}</span></p><p>${c.text}</p>`;
+      setMetricState("totalGeral", c.cls);
+      const classificacaoEl = document.getElementById("classificacao");
+      classificacaoEl.className = c.cls;
+      classificacaoEl.innerHTML = `<p><span class="tag ${c.cls}">${c.label}</span></p><p>${c.text}</p>`;
       renderInsights(scores);
       saveData();
     }
