@@ -48,11 +48,11 @@ Cada item recebe uma nota de **0 a 5**, totalizando até **125 pontos**.
 
 ## 📊 Classificação
 
-| Pontuação | Status              |
-|----------|-------------------|
-| 100–125  | ✅ Célula saudável |
-| 70–99    | ⚠️ Atenção        |
-| < 70     | ❌ Em risco        |
+| Pontuação   | Status              |
+|-------------|--------------------|
+| 85% a 100%  | ✅ Célula saudável |
+| 65% a 84%   | ⚠️ Atenção         |
+| < 65%       | ❌ Em risco        |
 
 ---
 
