@@ -58,7 +58,7 @@ Cada item recebe uma nota de **0 a 5**, totalizando até **125 pontos**.
 
 ## 💻 Como usar
 
-1. Baixe o arquivo:
+1. [Acessar o checklist online](https://jonsnie.github.io/Celulas_Excelentes) ou Baixe o arquivo:
 
 2. Abra no navegador (Chrome, Edge, etc.)
 
