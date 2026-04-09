@@ -92,7 +92,6 @@
     .insight-chip{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.2px;line-height:1;white-space:nowrap}
     .insight-chip-priority{background:rgba(239,68,68,.15);color:#ffabab;border:1px solid rgba(239,68,68,.35)}
     .insight-chip-strength{background:rgba(34,197,94,.15);color:#8df0ae;border:1px solid rgba(34,197,94,.35)}
-    .insight-chip-warning {background: rgba(245,158,11,.15);color: #ffd089;border: 1px solid rgba(245,158,11,.35);}
     .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     @media (max-width: 900px){.container{padding:18px 16px 32px}.hero{padding:24px}.hero-grid,.grid,.two-cols{grid-template-columns:1fr}.hero h1{font-size:clamp(30px,10vw,44px)}.item{grid-template-columns:1fr}.score,.hero-stat-grid{grid-template-columns:1fr}}
     @media print{body{background:#fff;color:#000}.hero,.card,.metric,.day,.hero-panel,.hero-stat{box-shadow:none;background:#fff;color:#000}p,.small,.insights-table th,.insights-table td,.hero-support,.hero-intro,.hero-stat span{color:#333}.insights-table{background:#fff;border:1px solid #bbb}.insights-table th,.insights-table td{border-bottom:1px solid #bbb}select,input,textarea{border:1px solid #bbb;color:#000;background:#fff}.toolbar{display:none}.hero::before,.hero::after{display:none}}
@@ -105,7 +104,7 @@
         <div class="hero-copy">
           <div class="hero-kicker">Diagnóstico local e privado</div>
           <h1>Checklist prático para avaliar a saúde da sua célula</h1>
-          <p class="hero-intro">Um ponto de partida objetivo para perceber forças, fragilidades e prioridades da semana, medindo a saúde, execução, crescimento e maturidade</p>
+          <p class="hero-intro">Um ponto de partida objetivo para perceber forças, fragilidades e prioridades da semana.</p>
           <p class="hero-support">Nenhuma informação é compartilhada: o salvamento é local e restrito ao seu dispositivo. Para aprofundar os critérios, use como apoio o livro <strong>Células Excelentes</strong>, de Léo Matos, que inspira esta avaliação.</p>
           <div class="hero-pill-row">
             <span class="hero-pill">Pontuação dinâmica de 0 a 5</span>
@@ -188,55 +187,6 @@
             <div class="item"><label>Há espaço para a ação do Espírito</label><select class="score-input" data-category="espiritualidade"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
           </div></div>
 
-
-          <!-- NOVA SEÇÃO: DINÂMICA DA REUNIÃO -->
-<div class="card section">
-  <div class="section-header"><h2>6. Dinâmica da Reunião</h2></div>
-  <div class="section-body" data-category="dinamica">
-    <div class="item"><label>Há participação ativa dos membros</label><select class="score-input" data-category="dinamica"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>A reunião flui de forma natural</label><select class="score-input" data-category="dinamica"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>O conteúdo é simples e aplicável</label><select class="score-input" data-category="dinamica"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>O tempo da reunião é bem distribuído</label><select class="score-input" data-category="dinamica"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>O líder não centraliza toda a reunião</label><select class="score-input" data-category="dinamica"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-  </div>
-</div>
-
-<!-- NOVA SEÇÃO: CRESCIMENTO -->
-<div class="card section">
-  <div class="section-header"><h2>7. Crescimento</h2></div>
-  <div class="section-body" data-category="crescimento">
-    <div class="item"><label>Novas pessoas são convidadas regularmente</label><select class="score-input" data-category="crescimento"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>A célula está crescendo numericamente</label><select class="score-input" data-category="crescimento"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Os membros convidam outras pessoas</label><select class="score-input" data-category="crescimento"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Visitantes retornam</label><select class="score-input" data-category="crescimento"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Existe cultura de crescimento</label><select class="score-input" data-category="crescimento"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-  </div>
-</div>
-
-<!-- NOVA SEÇÃO: MULTIPLICAÇÃO -->
-<div class="card section">
-  <div class="section-header"><h2>8. Multiplicação</h2></div>
-  <div class="section-body" data-category="multiplicacao">
-    <div class="item"><label>Novos líderes estão sendo preparados</label><select class="score-input" data-category="multiplicacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Existe um líder em desenvolvimento</label><select class="score-input" data-category="multiplicacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Há intenção clara de multiplicação</label><select class="score-input" data-category="multiplicacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>A célula está próxima de multiplicar</label><select class="score-input" data-category="multiplicacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>A liderança está sendo descentralizada</label><select class="score-input" data-category="multiplicacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-  </div>
-</div>
-
-<!-- NOVA SEÇÃO: MELHORIA CONTÍNUA -->
-<div class="card section">
-  <div class="section-header"><h2>9. Evolução (Melhoria Contínua)</h2></div>
-  <div class="section-body" data-category="evolucao">
-    <div class="item"><label>A célula é avaliada semanalmente</label><select class="score-input" data-category="evolucao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Melhorias são aplicadas rapidamente</label><select class="score-input" data-category="evolucao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Há acompanhamento de progresso</label><select class="score-input" data-category="evolucao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Erros são corrigidos com rapidez</label><select class="score-input" data-category="evolucao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-    <div class="item"><label>Existe disciplina e constância</label><select class="score-input" data-category="evolucao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
-  </div>
-</div>
-
           <div class="card section"><div class="section-header"><h2>Observações e “o que não estou vendo”</h2></div><div class="section-body">
             <div class="two-cols">
               <div><label class="small">Principais forças percebidas</label><textarea id="forcas" placeholder="Ex.: boa recepção, constância, comunhão..."></textarea></div>
@@ -250,18 +200,13 @@
       <div>
         <div class="card section"><div class="section-header"><h2>Painel de pontuação</h2></div><div class="section-body">
           <div class="score">
-            <div class="metric"><div class="small">1.Vida</div><div class="value" id="vidaTotal">0</div></div>
-            <div class="metric"><div class="small">2.Liderança</div><div class="value" id="liderancaTotal">0</div></div>
-            <div class="metric"><div class="small">3.Organização</div><div class="value" id="organizacaoTotal">0</div></div>
-            <div class="metric"><div class="small">4.Ambiente</div><div class="value" id="ambienteTotal">0</div></div>
-            <div class="metric"><div class="small">5.Espiritualidade</div><div class="value" id="espiritualidadeTotal">0</div></div>
-            <div class="metric"><div class="small">6.Dinâmica</div><div class="value" id="dinamicaTotal">0</div></div>
-            <div class="metric"><div class="small">7.Crescimento</div><div class="value" id="crescimentoTotal">0</div></div>
-            <div class="metric"><div class="small">8.Multiplicação</div><div class="value" id="multiplicacaoTotal">0</div></div>
-            <div class="metric"><div class="small">9.Evolução</div><div class="value" id="evolucaoTotal">0</div></div>
+            <div class="metric"><div class="small">Vida</div><div class="value" id="vidaTotal">0</div></div>
+            <div class="metric"><div class="small">Liderança</div><div class="value" id="liderancaTotal">0</div></div>
+            <div class="metric"><div class="small">Organização</div><div class="value" id="organizacaoTotal">0</div></div>
+            <div class="metric"><div class="small">Ambiente</div><div class="value" id="ambienteTotal">0</div></div>
+            <div class="metric"><div class="small">Espiritualidade</div><div class="value" id="espiritualidadeTotal">0</div></div>
             <div class="metric"><div class="small">Total geral</div><div class="value" id="totalGeral">0</div></div>
           </div>
-          
           <div id="classificacao"></div>
           <table class="insights-table" id="insights">
             <thead>
@@ -292,100 +237,17 @@
     function sumCategory(category){
       return [...document.querySelectorAll(`.score-input[data-category="${category}"]`)].reduce((acc, el) => acc + Number(el.value || 0), 0);
     }
-//     function classify(total){
-//       if(total >= 100){ return { label: "Célula saudável", cls: "good", text: "A estrutura está saudável. Continue ajustando detalhes sem perder a intencionalidade." }; }
-//       if(total >= 70){ return { label: "Atenção", cls: "warn", text: "Há boa base, mas existem áreas que precisam de intervenção prática nesta semana." }; }
-//       return { label: "Célula em risco", cls: "bad", text: "A célula precisa de ação imediata, foco e acompanhamento mais próximo." };
-//     }
-function classify(total) {
-  const maxTotal =
-    25 + // vida
-    25 + // lideranca
-    25 + // organizacao
-    25 + // ambiente
-    25 + // espiritualidade
-    25 * 1.1 + // dinamica
-    25 * 1.3 + // crescimento
-    25 * 1.5 + // multiplicacao
-    25 * 1.2;  // evolucao
-
-  const percentage = (total / maxTotal) * 100;
-
-  if (percentage >= 85) {
-    return {
-      label: "Célula saudável",
-      cls: "good",
-      text: "A estrutura está saudável. Continue ajustando detalhes sem perder a intencionalidade."
-    };
-  }
-
-  if (percentage >= 65) {
-    return {
-      label: "Atenção",
-      cls: "warn",
-      text: "Há boa base, mas existem áreas que precisam de intervenção prática nesta semana."
-    };
-  }
-
-  return {
-    label: "Célula em risco",
-    cls: "bad",
-    text: "A célula precisa de ação imediata, foco e acompanhamento mais próximo."
-  };
-}
-//     function classifyPartial(score, maxScore){
-//       const ratio = maxScore ? score / maxScore : 0;
-//       if(ratio >= 0.8) return "good";
-//       if(ratio >= 0.56) return "warn";
-//       return "bad";
-//     }
-function classifyPartial(score, maxScore) {
-  const percentage = maxScore > 0 ? (score / maxScore) * 100 : 0;
-
-  if (percentage >= 85) return "good";
-  if (percentage >= 65) return "warn";
-  return "bad";
-}
-
-function classify(total) {
-  const maxTotal =
-    25 +
-    25 +
-    25 +
-    25 +
-    25 +
-    25 * 1.1 +
-    25 * 1.3 +
-    25 * 1.5 +
-    25 * 1.2;
-
-  const percentage = (total / maxTotal) * 100;
-
-  if (percentage >= 85) {
-    return {
-      label: "Célula saudável",
-      cls: "good",
-      text: "A célula demonstra saúde, consistência e maturidade.",
-      percentage
-    };
-  }
-
-  if (percentage >= 65) {
-    return {
-      label: "Atenção",
-      cls: "warn",
-      text: "A célula possui boa base, mas ainda não atingiu um nível saudável de consistência.",
-      percentage
-    };
-  }
-
-  return {
-    label: "Célula em risco",
-    cls: "bad",
-    text: "A célula precisa de intervenção imediata e acompanhamento mais próximo.",
-    percentage
-  };
-}
+    function classify(total){
+      if(total >= 100){ return { label: "Célula saudável", cls: "good", text: "A estrutura está saudável. Continue ajustando detalhes sem perder a intencionalidade." }; }
+      if(total >= 70){ return { label: "Atenção", cls: "warn", text: "Há boa base, mas existem áreas que precisam de intervenção prática nesta semana." }; }
+      return { label: "Célula em risco", cls: "bad", text: "A célula precisa de ação imediata, foco e acompanhamento mais próximo." };
+    }
+    function classifyPartial(score, maxScore){
+      const ratio = maxScore ? score / maxScore : 0;
+      if(ratio >= 0.8) return "good";
+      if(ratio >= 0.56) return "warn";
+      return "bad";
+    }
     function setMetricState(valueId, state){
       const valueEl = document.getElementById(valueId);
       const card = valueEl ? valueEl.closest(".metric") : null;
@@ -393,254 +255,60 @@ function classify(total) {
       card.classList.remove("metric-good", "metric-warn", "metric-bad");
       card.classList.add(`metric-${state}`);
     }
-
-
-
-//     function renderInsights(scores){
-//       const ordered = Object.entries(scores).sort((a,b) => a[1]-b[1]);
-//       const weakest = ordered.slice(0,2);
-//       const strongest = ordered.slice(-2).reverse();
-//       const nameMap = {vida:"Vida", lideranca:"Liderança", organizacao:"Organização", ambiente:"Ambiente", espiritualidade:"Espiritualidade"};
-//       const tableBody = document.querySelector("#insights tbody");
-//       tableBody.innerHTML = "";
-//       weakest.forEach(([key, value]) => {
-//         const mainRow = document.createElement("tr");
-//         mainRow.innerHTML = `<td><span class="insight-chip insight-chip-priority">Prioridade</span></td><td>${nameMap[key]}</td><td>${value}/25</td>`;
-//         tableBody.appendChild(mainRow);
-//         const summaryRow = document.createElement("tr");
-//         summaryRow.className = "insight-summary";
-//         summaryRow.innerHTML = `<td colspan="3">Área com maior necessidade de melhoria nesta semana.</td>`;
-//         tableBody.appendChild(summaryRow);
-//       });
-//       strongest.forEach(([key, value]) => {
-//         const mainRow = document.createElement("tr");
-//         mainRow.innerHTML = `<td><span class="insight-chip insight-chip-strength">Ponto forte</span></td><td>${nameMap[key]}</td><td>${value}/25</td>`;
-//         tableBody.appendChild(mainRow);
-//         const summaryRow = document.createElement("tr");
-//         summaryRow.className = "insight-summary";
-//         summaryRow.innerHTML = `<td colspan="3">Área mais consistente no momento.</td>`;
-//         tableBody.appendChild(summaryRow);
-//       });
-//     }
-function renderInsights(scores) {
-  const categories = {
-    vida: "1.Vida",
-    lideranca: "2.Liderança",
-    organizacao: "3.Organização",
-    ambiente: "4.Ambiente",
-    espiritualidade: "5.Espiritualidade",
-    dinamica: "6.Dinâmica",
-    crescimento: "7.Crescimento",
-    multiplicacao: "8.Multiplicação",
-    evolucao: "9.Evolução"
-  };
-
-  const tbody = document.querySelector("#insights tbody");
-  if (!tbody) return;
-
-  const entries = Object.keys(categories).map((key) => ({
-    key,
-    name: categories[key],
-    value: scores[key] || 0
-  }));
-
-  // ordenar do pior para o melhor
-  const sorted = entries.sort((a, b) => a.value - b.value);
-
-  tbody.innerHTML = "";
-
-  function classifyItem(value) {
-    if (value <= 10) {
-      return {
-        type: "Prioridade",
-        class: "insight-chip-priority",
-        text: "Área crítica que precisa de ação imediata."
-      };
+    function renderInsights(scores){
+      const ordered = Object.entries(scores).sort((a,b) => a[1]-b[1]);
+      const weakest = ordered.slice(0,2);
+      const strongest = ordered.slice(-2).reverse();
+      const nameMap = {vida:"Vida", lideranca:"Liderança", organizacao:"Organização", ambiente:"Ambiente", espiritualidade:"Espiritualidade"};
+      const tableBody = document.querySelector("#insights tbody");
+      tableBody.innerHTML = "";
+      weakest.forEach(([key, value]) => {
+        const mainRow = document.createElement("tr");
+        mainRow.innerHTML = `<td><span class="insight-chip insight-chip-priority">Prioridade</span></td><td>${nameMap[key]}</td><td>${value}/25</td>`;
+        tableBody.appendChild(mainRow);
+        const summaryRow = document.createElement("tr");
+        summaryRow.className = "insight-summary";
+        summaryRow.innerHTML = `<td colspan="3">Área com maior necessidade de melhoria nesta semana.</td>`;
+        tableBody.appendChild(summaryRow);
+      });
+      strongest.forEach(([key, value]) => {
+        const mainRow = document.createElement("tr");
+        mainRow.innerHTML = `<td><span class="insight-chip insight-chip-strength">Ponto forte</span></td><td>${nameMap[key]}</td><td>${value}/25</td>`;
+        tableBody.appendChild(mainRow);
+        const summaryRow = document.createElement("tr");
+        summaryRow.className = "insight-summary";
+        summaryRow.innerHTML = `<td colspan="3">Área mais consistente no momento.</td>`;
+        tableBody.appendChild(summaryRow);
+      });
     }
-    if (value <= 18) {
-      return {
-        type: "Atenção",
-        class: "insight-chip-warning",
-        text: "Área que pode melhorar nesta semana."
+    function updateScores(){
+      const scores = {
+        vida: sumCategory("vida"),
+        lideranca: sumCategory("lideranca"),
+        organizacao: sumCategory("organizacao"),
+        ambiente: sumCategory("ambiente"),
+        espiritualidade: sumCategory("espiritualidade")
       };
+      document.getElementById("vidaTotal").textContent = scores.vida;
+      document.getElementById("liderancaTotal").textContent = scores.lideranca;
+      document.getElementById("organizacaoTotal").textContent = scores.organizacao;
+      document.getElementById("ambienteTotal").textContent = scores.ambiente;
+      document.getElementById("espiritualidadeTotal").textContent = scores.espiritualidade;
+      setMetricState("vidaTotal", classifyPartial(scores.vida, 25));
+      setMetricState("liderancaTotal", classifyPartial(scores.lideranca, 25));
+      setMetricState("organizacaoTotal", classifyPartial(scores.organizacao, 25));
+      setMetricState("ambienteTotal", classifyPartial(scores.ambiente, 25));
+      setMetricState("espiritualidadeTotal", classifyPartial(scores.espiritualidade, 25));
+      const total = Object.values(scores).reduce((a,b)=>a+b,0);
+      document.getElementById("totalGeral").textContent = total;
+      const c = classify(total);
+      setMetricState("totalGeral", c.cls);
+      const classificacaoEl = document.getElementById("classificacao");
+      classificacaoEl.className = c.cls;
+      classificacaoEl.innerHTML = `<p><span class="tag ${c.cls}">${c.label}</span></p><p>${c.text}</p>`;
+      renderInsights(scores);
+      saveData();
     }
-    return {
-      type: "Ponto forte",
-      class: "insight-chip-strength",
-      text: "Área consistente e saudável."
-    };
-  }
-
-  sorted.forEach((item) => {
-    const c = classifyItem(item.value);
-
-    tbody.innerHTML += `
-      <tr>
-        <td><span class="insight-chip ${c.class}">${c.type}</span></td>
-        <td>${item.name}</td>
-        <td>${item.value}/25</td>
-      </tr>
-      <tr class="insight-summary">
-        <td colspan="3">${c.text}</td>
-      </tr>
-    `;
-  });
-}
-//     function updateScores(){
-//       const scores = {
-//         vida: sumCategory("vida"),
-//         lideranca: sumCategory("lideranca"),
-//         organizacao: sumCategory("organizacao"),
-//         ambiente: sumCategory("ambiente"),
-//         espiritualidade: sumCategory("espiritualidade")
-//       };
-//       document.getElementById("vidaTotal").textContent = scores.vida;
-//       document.getElementById("liderancaTotal").textContent = scores.lideranca;
-//       document.getElementById("organizacaoTotal").textContent = scores.organizacao;
-//       document.getElementById("ambienteTotal").textContent = scores.ambiente;
-//       document.getElementById("espiritualidadeTotal").textContent = scores.espiritualidade;
-//       setMetricState("vidaTotal", classifyPartial(scores.vida, 25));
-//       setMetricState("liderancaTotal", classifyPartial(scores.lideranca, 25));
-//       setMetricState("organizacaoTotal", classifyPartial(scores.organizacao, 25));
-//       setMetricState("ambienteTotal", classifyPartial(scores.ambiente, 25));
-//       setMetricState("espiritualidadeTotal", classifyPartial(scores.espiritualidade, 25));
-//       const total = Object.values(scores).reduce((a,b)=>a+b,0);
-//       document.getElementById("totalGeral").textContent = total;
-//       const c = classify(total);
-//       setMetricState("totalGeral", c.cls);
-//       const classificacaoEl = document.getElementById("classificacao");
-//       classificacaoEl.className = c.cls;
-//       classificacaoEl.innerHTML = `<p><span class="tag ${c.cls}">${c.label}</span></p><p>${c.text}</p>`;
-//       renderInsights(scores);
-//       saveData();
-//     }
-
-
-function classify(total) {
-  const maxTotal =
-    25 + // vida
-    25 + // lideranca
-    25 + // organizacao
-    25 + // ambiente
-    25 + // espiritualidade
-    25 * 1.1 + // dinamica
-    25 * 1.3 + // crescimento
-    25 * 1.5 + // multiplicacao
-    25 * 1.2;  // evolucao
-
-  const percentage = (total / maxTotal) * 100;
-
-  if (percentage >= 85) {
-    return {
-      label: "Célula saudável",
-      cls: "good",
-      text: "A célula demonstra saúde, consistência e maturidade.",
-      percentage
-    };
-  }
-
-  if (percentage >= 65) {
-    return {
-      label: "Atenção",
-      cls: "warn",
-      text: "A célula possui boa base, mas ainda não atingiu um nível saudável de consistência.",
-      percentage
-    };
-  }
-
-  return {
-    label: "Célula em risco",
-    cls: "bad",
-    text: "A célula precisa de intervenção imediata e acompanhamento mais próximo.",
-    percentage
-  };
-}
-
-function updateScores() {
-  const scores = {
-    vida: sumCategory("vida"),
-    lideranca: sumCategory("lideranca"),
-    organizacao: sumCategory("organizacao"),
-    ambiente: sumCategory("ambiente"),
-    espiritualidade: sumCategory("espiritualidade"),
-    dinamica: sumCategory("dinamica"),
-    crescimento: sumCategory("crescimento"),
-    multiplicacao: sumCategory("multiplicacao"),
-    evolucao: sumCategory("evolucao")
-  };
-
-  // cartões individuais
-  document.getElementById("vidaTotal").textContent = scores.vida;
-  document.getElementById("liderancaTotal").textContent = scores.lideranca;
-  document.getElementById("organizacaoTotal").textContent = scores.organizacao;
-  document.getElementById("ambienteTotal").textContent = scores.ambiente;
-  document.getElementById("espiritualidadeTotal").textContent = scores.espiritualidade;
-
-  if (document.getElementById("dinamicaTotal")) {
-    document.getElementById("dinamicaTotal").textContent = scores.dinamica;
-  }
-  if (document.getElementById("crescimentoTotal")) {
-    document.getElementById("crescimentoTotal").textContent = scores.crescimento;
-  }
-  if (document.getElementById("multiplicacaoTotal")) {
-    document.getElementById("multiplicacaoTotal").textContent = scores.multiplicacao;
-  }
-  if (document.getElementById("evolucaoTotal")) {
-    document.getElementById("evolucaoTotal").textContent = scores.evolucao;
-  }
-
-  // estados visuais individuais
-  setMetricState("vidaTotal", classifyPartial(scores.vida, 25));
-  setMetricState("liderancaTotal", classifyPartial(scores.lideranca, 25));
-  setMetricState("organizacaoTotal", classifyPartial(scores.organizacao, 25));
-  setMetricState("ambienteTotal", classifyPartial(scores.ambiente, 25));
-  setMetricState("espiritualidadeTotal", classifyPartial(scores.espiritualidade, 25));
-
-  if (document.getElementById("dinamicaTotal")) {
-    setMetricState("dinamicaTotal", classifyPartial(scores.dinamica, 25));
-  }
-  if (document.getElementById("crescimentoTotal")) {
-    setMetricState("crescimentoTotal", classifyPartial(scores.crescimento, 25));
-  }
-  if (document.getElementById("multiplicacaoTotal")) {
-    setMetricState("multiplicacaoTotal", classifyPartial(scores.multiplicacao, 25));
-  }
-  if (document.getElementById("evolucaoTotal")) {
-    setMetricState("evolucaoTotal", classifyPartial(scores.evolucao, 25));
-  }
-
-  // total ponderado
-  const total =
-    scores.vida +
-    scores.lideranca +
-    scores.organizacao +
-    scores.ambiente +
-    scores.espiritualidade +
-    scores.dinamica * 1.1 +
-    scores.crescimento * 1.3 +
-    scores.multiplicacao * 1.5 +
-    scores.evolucao * 1.2;
-
-  const finalTotal = Math.round(total);
-
-  document.getElementById("totalGeral").textContent = finalTotal;
-
-  const c = classify(finalTotal);
-  setMetricState("totalGeral", c.cls);
-
-  const classificacaoEl = document.getElementById("classificacao");
-  classificacaoEl.className = c.cls;
-  classificacaoEl.innerHTML = `
-    <p><span class="tag ${c.cls}">${c.label}</span></p>
-    <p>${c.text}</p>
-    <p><strong>${c.percentage.toFixed(1)}%</strong> do potencial máximo</p>
-  `;
-
-  renderInsights(scores);
-  saveData();
-}
-
-
     function saveData(){
       const data = {};
       document.querySelectorAll("select, textarea, input[type='text']").forEach((el, index) => { const key = el.id || `field_${index}`; data[key] = el.value; });
