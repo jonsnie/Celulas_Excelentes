@@ -18,10 +18,34 @@
       --bad:#ef4444;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Arial, Helvetica, sans-serif;background:linear-gradient(180deg,#0b1220,#10192d);color:var(--text)}
-    .container{max-width:1200px;margin:0 auto;padding:24px}
+    body{margin:0;font-family:"Segoe UI Variable","Segoe UI",Tahoma,sans-serif;background:
+      radial-gradient(circle at top left,rgba(59,130,246,.16),transparent 28%),
+      radial-gradient(circle at top right,rgba(16,185,129,.12),transparent 24%),
+      linear-gradient(180deg,#09111f,#10192d 46%,#0e1728);color:var(--text)}
+    .container{max-width:1240px;margin:0 auto;padding:28px 24px 40px}
     .hero,.card{background:rgba(18,26,43,.95);border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.22)}
-    .hero{padding:24px;margin-bottom:20px}
+    .hero{position:relative;padding:34px;margin-bottom:24px;overflow:hidden;background:
+      linear-gradient(135deg,rgba(11,18,32,.98),rgba(16,25,45,.94) 52%,rgba(10,21,37,.98)),
+      radial-gradient(circle at top right,rgba(59,130,246,.22),transparent 32%)}
+    .hero::before,.hero::after{content:"";position:absolute;border-radius:999px;filter:blur(10px);pointer-events:none}
+    .hero::before{width:220px;height:220px;top:-90px;right:-40px;background:radial-gradient(circle,rgba(59,130,246,.26),transparent 68%)}
+    .hero::after{width:180px;height:180px;bottom:-110px;left:-20px;background:radial-gradient(circle,rgba(16,185,129,.16),transparent 70%)}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,.95fr);gap:24px;align-items:stretch}
+    .hero-copy{max-width:720px}
+    .hero-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.18);background:rgba(148,163,184,.08);color:#dbe7ff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .hero h1{margin:18px 0 14px;font-size:clamp(34px,5vw,54px);line-height:.96;letter-spacing:-.04em}
+    .hero-intro{max-width:680px;margin:0 0 14px;color:#dfe8fb;font-size:16px;line-height:1.65}
+    .hero-support{max-width:660px;margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+    .hero-pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .hero-pill{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.16);background:rgba(9,15,28,.48);color:#d7e4ff;font-size:12px;font-weight:600}
+    .hero-panel{position:relative;padding:18px;border-radius:20px;border:1px solid rgba(148,163,184,.14);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 16px 28px rgba(0,0,0,.18);backdrop-filter:blur(8px)}
+    .hero-panel-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9fb0d3}
+    .hero-panel h3{margin:10px 0 8px;font-size:24px;line-height:1.1}
+    .hero-panel p{margin:0 0 16px}
+    .hero-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .hero-stat{padding:14px;border-radius:16px;border:1px solid rgba(148,163,184,.12);background:rgba(10,17,31,.62)}
+    .hero-stat strong{display:block;font-size:26px;line-height:1;color:#f8fbff}
+    .hero-stat span{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.4}
     h1,h2,h3{margin:0 0 12px}
     p{color:var(--muted);line-height:1.5}
     .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
@@ -49,14 +73,14 @@
     #classificacao.bad{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.3)}
     #classificacao p{margin:0}
     #classificacao p + p{margin-top:8px}
-    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    button{border:none;background:var(--accent);color:white;border-radius:10px;padding:11px 14px;cursor:pointer;font-weight:700}
-    button.secondary{background:#24324f;border:1px solid var(--border)}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    button{border:none;background:linear-gradient(135deg,#60a5fa,#2563eb);color:white;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:700;box-shadow:0 10px 20px rgba(37,99,235,.18)}
+    button.secondary{background:rgba(36,50,79,.74);border:1px solid var(--border);box-shadow:none}
     .small{font-size:12px;color:var(--muted)}
     .days{display:grid;gap:12px}
     .day{padding:14px;border-radius:14px;background:var(--panel-2);border:1px solid var(--border)}
     .day h3{font-size:16px;margin-bottom:8px}
-    .footer-note{margin-top:14px;font-size:12px;color:var(--muted)}
+    .footer-note{margin-top:18px;font-size:12px;color:var(--muted)}
     .insights-table{width:100%;margin-top:12px;border-collapse:collapse;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02)}
     .insights-table th,.insights-table td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}
     .insights-table th{font-size:12px;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.04)}
@@ -69,22 +93,55 @@
     .insight-chip-priority{background:rgba(239,68,68,.15);color:#ffabab;border:1px solid rgba(239,68,68,.35)}
     .insight-chip-strength{background:rgba(34,197,94,.15);color:#8df0ae;border:1px solid rgba(34,197,94,.35)}
     .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width: 900px){.grid{grid-template-columns:1fr}.item{grid-template-columns:1fr}.score{grid-template-columns:1fr}.two-cols{grid-template-columns:1fr}}
-    @media print{body{background:#fff;color:#000}.hero,.card,.metric,.day{box-shadow:none;background:#fff;color:#000}p,.small,.insights-table th,.insights-table td{color:#333}.insights-table{background:#fff;border:1px solid #bbb}.insights-table th,.insights-table td{border-bottom:1px solid #bbb}select,input,textarea{border:1px solid #bbb;color:#000;background:#fff}.toolbar{display:none}}
+    @media (max-width: 900px){.container{padding:18px 16px 32px}.hero{padding:24px}.hero-grid,.grid,.two-cols{grid-template-columns:1fr}.hero h1{font-size:clamp(30px,10vw,44px)}.item{grid-template-columns:1fr}.score,.hero-stat-grid{grid-template-columns:1fr}}
+    @media print{body{background:#fff;color:#000}.hero,.card,.metric,.day,.hero-panel,.hero-stat{box-shadow:none;background:#fff;color:#000}p,.small,.insights-table th,.insights-table td,.hero-support,.hero-intro,.hero-stat span{color:#333}.insights-table{background:#fff;border:1px solid #bbb}.insights-table th,.insights-table td{border-bottom:1px solid #bbb}select,input,textarea{border:1px solid #bbb;color:#000;background:#fff}.toolbar{display:none}.hero::before,.hero::after{display:none}}
   </style>
 </head>
 <body>
   <div class="container">
     <div class="hero">
-      <h1>Checklist prático de avaliação da célula</h1>
-      <h5>Seja honesto consigo mesmo pois nenhuma informação é compartilhada, o salvamento é local e restrito ao seu dispositivo. Para maiores esclarecimentos leia o livro Células Excelentes de Léo Matos o qual este checklist foi baseado.</h5>
-      <p>Formulário para cálculo dinâmico da pontuação. Use nota de <strong>0 a 5</strong></p>
-      <div class="toolbar">
-        <button type="button" onclick="saveData()">Salvar agora</button>
-        <button type="button" class="secondary" onclick="resetForm()">Limpar formulário</button>
-        <button type="button" class="secondary" onclick="window.print()">Imprimir / PDF</button>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker">Diagnóstico local e privado</div>
+          <h1>Checklist prático para avaliar a saúde da sua célula</h1>
+          <p class="hero-intro">Um ponto de partida objetivo para perceber forças, fragilidades e prioridades da semana.</p>
+          <p class="hero-support">Nenhuma informação é compartilhada: o salvamento é local e restrito ao seu dispositivo. Para aprofundar os critérios, use como apoio o livro <strong>Células Excelentes</strong>, de Léo Matos, que inspira esta avaliação.</p>
+          <div class="hero-pill-row">
+            <span class="hero-pill">Pontuação dinâmica de 0 a 5</span>
+            <span class="hero-pill">Plano semanal editável</span>
+            <span class="hero-pill">Impressão em PDF</span>
+          </div>
+          <div class="toolbar">
+            <button type="button" onclick="saveData()">Salvar agora</button>
+            <button type="button" class="secondary" onclick="resetForm()">Limpar formulário</button>
+            <button type="button" class="secondary" onclick="window.print()">Imprimir / PDF</button>
+          </div>
+          <div class="footer-note">Escala sugerida: 0 = inexistente, 1 = muito fraco, 2 = fraco, 3 = regular, 4 = bom, 5 = excelente.</div>
+        </div>
+        <aside class="hero-panel">
+          <div class="hero-panel-label">Leitura rápida</div>
+          <h3>Avalie, ajuste e acompanhe</h3>
+          <p>Use este painel para transformar percepção em ação prática durante a semana da célula.</p>
+          <div class="hero-stat-grid">
+            <div class="hero-stat">
+              <strong>5</strong>
+              <span>áreas principais de análise</span>
+            </div>
+            <div class="hero-stat">
+              <strong>0-5</strong>
+              <span>escala simples para cada critério</span>
+            </div>
+            <div class="hero-stat">
+              <strong>7</strong>
+              <span>blocos no plano semanal de melhoria</span>
+            </div>
+            <div class="hero-stat">
+              <strong>1</strong>
+              <span>histórico salvo localmente no dispositivo</span>
+            </div>
+          </div>
+        </aside>
       </div>
-      <div class="footer-note">Escala sugerida: 0 = inexistente, 1 = muito fraco, 2 = fraco, 3 = regular, 4 = bom, 5 = excelente.</div>
     </div>
 
     <div class="grid">
@@ -163,7 +220,7 @@
           </table>
         </div></div>
 
-        <div class="card section"><div class="section-header"><h2>Plano semanal de melhoria<br><small style="font-size:12px;">Plano sugerido, sinta-se a vontade para melhora-lo incluindo mais anotações além de adapta-lo conforme o dia da sua célula</small></h2></div><div class="section-body"><div class="days">
+        <div class="card section"><div class="section-header"><h2 style="line-height:1.1;">Plano semanal de melhoria<br><small style="display:block;margin-top:4px;font-size:12px;line-height:1.2;">Plano sugerido, sinta-se à vontade para melhorá-lo, incluindo mais anotações, além de adaptá-lo conforme o dia da sua célula.</small></h2></div><div class="section-body"><div class="days">
           <div class="day"><h3>Segunda — Avaliação + planejamento</h3><textarea id="segunda">Revisar checklist, identificar 1 ou 2 pontos críticos e definir ações práticas.</textarea></div>
           <div class="day"><h3>Terça — Relacionamentos</h3><textarea id="terca">Contatar 2 ou 3 pessoas da célula e ouvir com atenção.</textarea></div>
           <div class="day"><h3>Quarta — Espiritual</h3><textarea id="quarta">Orar nome por nome e preparar o coração.</textarea></div>
