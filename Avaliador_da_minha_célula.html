@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avaliação da Célula</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#121a2b;
+      --panel-2:#182235;
+      --text:#e8eefc;
+      --muted:#9fb0d3;
+      --border:#2a3650;
+      --accent:#3b82f6;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial, Helvetica, sans-serif;background:linear-gradient(180deg,#0b1220,#10192d);color:var(--text)}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    .hero,.card{background:rgba(18,26,43,.95);border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+    .hero{padding:24px;margin-bottom:20px}
+    h1,h2,h3{margin:0 0 12px}
+    p{color:var(--muted);line-height:1.5}
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+    .section{margin-bottom:18px;overflow:hidden}
+    .section-header{padding:16px 18px;background:var(--panel-2);border-bottom:1px solid var(--border)}
+    .section-body{padding:10px 18px 18px}
+    .item{display:grid;grid-template-columns:1fr 120px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .item:last-child{border-bottom:none}
+    .item label{line-height:1.4}
+    select, input[type="text"], textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0f1728;color:var(--text);outline:none}
+    textarea{min-height:86px;resize:vertical}
+    .score{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
+    .metric{padding:14px;border-radius:14px;background:var(--panel-2);border:1px solid var(--border)}
+    .metric .value{font-size:28px;font-weight:700;margin-top:4px}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px}
+    .good{background:rgba(34,197,94,.15);color:#8df0ae;border:1px solid rgba(34,197,94,.35)}
+    .warn{background:rgba(245,158,11,.15);color:#ffd089;border:1px solid rgba(245,158,11,.35)}
+    .bad{background:rgba(239,68,68,.15);color:#ffabab;border:1px solid rgba(239,68,68,.35)}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    button{border:none;background:var(--accent);color:white;border-radius:10px;padding:11px 14px;cursor:pointer;font-weight:700}
+    button.secondary{background:#24324f;border:1px solid var(--border)}
+    .small{font-size:12px;color:var(--muted)}
+    .days{display:grid;gap:12px}
+    .day{padding:14px;border-radius:14px;background:var(--panel-2);border:1px solid var(--border)}
+    .day h3{font-size:16px;margin-bottom:8px}
+    .footer-note{margin-top:14px;font-size:12px;color:var(--muted)}
+    .summary-list{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}.item{grid-template-columns:1fr}.score{grid-template-columns:1fr}.two-cols{grid-template-columns:1fr}}
+    @media print{body{background:#fff;color:#000}.hero,.card,.metric,.day{box-shadow:none;background:#fff;color:#000}p,.small,.summary-list{color:#333}select,input,textarea{border:1px solid #bbb;color:#000;background:#fff}.toolbar{display:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>Checklist prático de avaliação da célula</h1>
+      <p>Formulário para cálculo dinâmico da pontuação. Use nota de <strong>0 a 5</strong></p>
+      <div class="toolbar">
+        <button type="button" onclick="saveData()">Salvar agora</button>
+        <button type="button" class="secondary" onclick="resetForm()">Limpar formulário</button>
+        <button type="button" class="secondary" onclick="window.print()">Imprimir / PDF</button>
+      </div>
+      <div class="footer-note">Escala sugerida: 0 = inexistente, 1 = muito fraco, 2 = fraco, 3 = regular, 4 = bom, 5 = excelente.</div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <form id="formulario">
+          <div class="card section"><div class="section-header"><h2>1. Vida (Relacionamentos)</h2></div><div class="section-body" data-category="vida">
+            <div class="item"><label>As pessoas interagem fora da reunião</label><select class="score-input" data-category="vida"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Existem amizades reais sendo formadas</label><select class="score-input" data-category="vida"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>O grupo se comunica durante a semana</label><select class="score-input" data-category="vida"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Há cuidado mútuo (oração, apoio, visitas)</label><select class="score-input" data-category="vida"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Novos visitantes são rapidamente integrados</label><select class="score-input" data-category="vida"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+          </div></div>
+
+          <div class="card section"><div class="section-header"><h2>2. Liderança</h2></div><div class="section-body" data-category="lideranca">
+            <div class="item"><label>O líder mantém contato individual com membros</label><select class="score-input" data-category="lideranca"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Existe discipulado ativo e intencional</label><select class="score-input" data-category="lideranca"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>O líder está formando novos líderes</label><select class="score-input" data-category="lideranca"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>O líder demonstra caráter e exemplo</label><select class="score-input" data-category="lideranca"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>O líder está crescendo espiritualmente</label><select class="score-input" data-category="lideranca"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+          </div></div>
+
+          <div class="card section"><div class="section-header"><h2>3. Identidade e organização</h2></div><div class="section-body" data-category="organizacao">
+            <div class="item"><label>Dia e horário são claros e consistentes</label><select class="score-input" data-category="organizacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>A reunião começa e termina no horário</label><select class="score-input" data-category="organizacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Existe estrutura clara para a reunião</label><select class="score-input" data-category="organizacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>O ambiente é organizado</label><select class="score-input" data-category="organizacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Visitantes entendem facilmente como funciona</label><select class="score-input" data-category="organizacao"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+          </div></div>
+
+          <div class="card section"><div class="section-header"><h2>4. Ambiente</h2></div><div class="section-body" data-category="ambiente">
+            <div class="item"><label>O local está limpo e preparado</label><select class="score-input" data-category="ambiente"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Existe acolhimento intencional</label><select class="score-input" data-category="ambiente"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>O clima é leve e agradável</label><select class="score-input" data-category="ambiente"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Há hospitalidade (água, café, cuidado)</label><select class="score-input" data-category="ambiente"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>As pessoas se sentem confortáveis para participar</label><select class="score-input" data-category="ambiente"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+          </div></div>
+
+          <div class="card section"><div class="section-header"><h2>5. Espiritualidade</h2></div><div class="section-body" data-category="espiritualidade">
+            <div class="item"><label>Há oração consistente na célula</label><select class="score-input" data-category="espiritualidade"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Existe expectativa espiritual (fé ativa)</label><select class="score-input" data-category="espiritualidade"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Pessoas são tocadas e transformadas</label><select class="score-input" data-category="espiritualidade"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>O líder busca a Deus durante a semana</label><select class="score-input" data-category="espiritualidade"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="item"><label>Há espaço para a ação do Espírito</label><select class="score-input" data-category="espiritualidade"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div>
+          </div></div>
+
+          <div class="card section"><div class="section-header"><h2>Observações e “o que não estou vendo”</h2></div><div class="section-body">
+            <div class="two-cols">
+              <div><label class="small">Principais forças percebidas</label><textarea id="forcas" placeholder="Ex.: boa recepção, constância, comunhão..."></textarea></div>
+              <div><label class="small">Pontos cegos / o que não estou vendo</label><textarea id="pontosCegos" placeholder="Ex.: falta de acompanhamento, pouca intencionalidade, atraso..."></textarea></div>
+            </div>
+            <div style="margin-top:12px"><label class="small">Ação prioritária da semana</label><input type="text" id="acaoPrioritaria" placeholder="Ex.: ligar para 3 membros e preparar melhor a recepção" /></div>
+          </div></div>
+        </form>
+      </div>
+
+      <div>
+        <div class="card section"><div class="section-header"><h2>Painel de pontuação</h2></div><div class="section-body">
+          <div class="score">
+            <div class="metric"><div class="small">Vida</div><div class="value" id="vidaTotal">0</div></div>
+            <div class="metric"><div class="small">Liderança</div><div class="value" id="liderancaTotal">0</div></div>
+            <div class="metric"><div class="small">Organização</div><div class="value" id="organizacaoTotal">0</div></div>
+            <div class="metric"><div class="small">Ambiente</div><div class="value" id="ambienteTotal">0</div></div>
+            <div class="metric"><div class="small">Espiritualidade</div><div class="value" id="espiritualidadeTotal">0</div></div>
+            <div class="metric"><div class="small">Total geral</div><div class="value" id="totalGeral">0</div></div>
+          </div>
+          <div id="classificacao"></div>
+          <ul class="summary-list" id="insights"></ul>
+        </div></div>
+
+        <div class="card section"><div class="section-header"><h2>Plano semanal de melhoria<br><small style="font-size:12px;">Plano sugerido, adapte conforme o dia da sua célula</small></h2></div><div class="section-body"><div class="days">
+          <div class="day"><h3>Segunda — Avaliação + planejamento</h3><textarea id="segunda">Revisar checklist, identificar 1 ou 2 pontos críticos e definir ações práticas.</textarea></div>
+          <div class="day"><h3>Terça — Relacionamentos</h3><textarea id="terca">Contatar 2 ou 3 pessoas da célula e ouvir com atenção.</textarea></div>
+          <div class="day"><h3>Quarta — Espiritual</h3><textarea id="quarta">Orar nome por nome e preparar o coração.</textarea></div>
+          <div class="day"><h3>Quinta — Convite e crescimento</h3><textarea id="quinta">Convidar pelo menos 1 pessoa nova e incentivar os membros.</textarea></div>
+          <div class="day"><h3>Sexta — Preparação da reunião</h3><textarea id="sexta">Revisar mensagem, alinhar ambiente e recepção.</textarea></div>
+          <div class="day"><h3>Dia da célula</h3><textarea id="diaCelula">Recepção calorosa, palavra prática, espaço para participação e follow-up.</textarea></div>
+          <div class="day"><h3>Pós-reunião</h3><textarea id="posReuniao">Enviar mensagem ao grupo, falar com visitantes e registrar aprendizados.</textarea></div>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sumCategory(category){
+      return [...document.querySelectorAll(`.score-input[data-category="${category}"]`)].reduce((acc, el) => acc + Number(el.value || 0), 0);
+    }
+    function classify(total){
+      if(total >= 100){ return { label: "Célula saudável", cls: "good", text: "A estrutura está saudável. Continue ajustando detalhes sem perder a intencionalidade." }; }
+      if(total >= 70){ return { label: "Atenção", cls: "warn", text: "Há boa base, mas existem áreas que precisam de intervenção prática nesta semana." }; }
+      return { label: "Célula em risco", cls: "bad", text: "A célula precisa de ação imediata, foco e acompanhamento mais próximo." };
+    }
+    function renderInsights(scores){
+      const ordered = Object.entries(scores).sort((a,b) => a[1]-b[1]);
+      const weakest = ordered.slice(0,2);
+      const strongest = ordered.slice(-2).reverse();
+      const nameMap = {vida:"Vida", lideranca:"Liderança", organizacao:"Organização", ambiente:"Ambiente", espiritualidade:"Espiritualidade"};
+      const list = document.getElementById("insights");
+      list.innerHTML = "";
+      weakest.forEach(([key, value]) => { const li = document.createElement("li"); li.textContent = `Prioridade de melhoria: ${nameMap[key]} (${value}/25).`; list.appendChild(li); });
+      strongest.forEach(([key, value]) => { const li = document.createElement("li"); li.textContent = `Ponto forte atual: ${nameMap[key]} (${value}/25).`; list.appendChild(li); });
+    }
+    function updateScores(){
+      const scores = {
+        vida: sumCategory("vida"),
+        lideranca: sumCategory("lideranca"),
+        organizacao: sumCategory("organizacao"),
+        ambiente: sumCategory("ambiente"),
+        espiritualidade: sumCategory("espiritualidade")
+      };
+      document.getElementById("vidaTotal").textContent = scores.vida;
+      document.getElementById("liderancaTotal").textContent = scores.lideranca;
+      document.getElementById("organizacaoTotal").textContent = scores.organizacao;
+      document.getElementById("ambienteTotal").textContent = scores.ambiente;
+      document.getElementById("espiritualidadeTotal").textContent = scores.espiritualidade;
+      const total = Object.values(scores).reduce((a,b)=>a+b,0);
+      document.getElementById("totalGeral").textContent = total;
+      const c = classify(total);
+      document.getElementById("classificacao").innerHTML = `<p><span class="tag ${c.cls}">${c.label}</span></p><p>${c.text}</p>`;
+      renderInsights(scores);
+      saveData();
+    }
+    function saveData(){
+      const data = {};
+      document.querySelectorAll("select, textarea, input[type='text']").forEach((el, index) => { const key = el.id || `field_${index}`; data[key] = el.value; });
+      localStorage.setItem("avaliacaoCelulaData", JSON.stringify(data));
+    }
+    function loadData(){
+      const raw = localStorage.getItem("avaliacaoCelulaData");
+      if(!raw){ updateScores(); return; }
+      try{
+        const data = JSON.parse(raw);
+        document.querySelectorAll("select, textarea, input[type='text']").forEach((el, index) => { const key = el.id || `field_${index}`; if(data[key] !== undefined){ el.value = data[key]; } });
+      }catch(e){ console.error("Erro ao carregar dados salvos.", e); }
+      updateScores();
+    }
+    function resetForm(){
+      if(!confirm("Deseja limpar todos os campos e pontuações?")) return;
+      localStorage.removeItem("avaliacaoCelulaData");
+      document.querySelectorAll("select").forEach(el => el.value = "3");
+      document.querySelectorAll("textarea, input[type='text']").forEach(el => el.value = "");
+      document.getElementById("segunda").value = "Revisar checklist, identificar 1 ou 2 pontos críticos e definir ações práticas.";
+      document.getElementById("terca").value = "Contatar 2 ou 3 pessoas da célula e ouvir com atenção.";
+      document.getElementById("quarta").value = "Orar nome por nome e preparar o coração.";
+      document.getElementById("quinta").value = "Convidar pelo menos 1 pessoa nova e incentivar os membros.";
+      document.getElementById("sexta").value = "Revisar mensagem, alinhar ambiente e recepção.";
+      document.getElementById("diaCelula").value = "Recepção calorosa, palavra prática, espaço para participação e follow-up.";
+      document.getElementById("posReuniao").value = "Enviar mensagem ao grupo, falar com visitantes e registrar aprendizados.";
+      updateScores();
+    }
+    document.querySelectorAll(".score-input").forEach(el => el.addEventListener("change", updateScores));
+    document.querySelectorAll("textarea, input[type='text']").forEach(el => el.addEventListener("input", saveData));
+    loadData();
+  </script>
+</body>
+</html>
